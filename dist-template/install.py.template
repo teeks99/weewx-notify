@@ -1,0 +1,23 @@
+from setup import ExtensionInstaller
+
+def loader():
+    return NotifyInstaller()
+
+class NotifyInstaller(ExtensionInstaller):
+    def __init__(self):
+        super(NotifyInstaller, self).__init__(
+            version="$version",
+            name='Notify',
+            description='Notification to remote server',
+            author="Thomas Kent",
+            author_email="tom@teeks99.com",
+            restful_services='user.notify.Notify',
+            config={
+                'StdRESTful': {
+                    'Notify': {
+                        'url': 'https://hc-ping.com'
+                    }
+                }
+            },
+            files=[$file_paths]
+        )
